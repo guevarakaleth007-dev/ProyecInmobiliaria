@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Tipo Persona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>CRUD Tipo Persona</h1>
+
+    <div class="form">
+        <input type="text" id="descripcion" placeholder="Ingrese descripción">
+        <button class="btn-guardar" onclick="guardar()">Guardar</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
