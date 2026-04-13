@@ -1,50 +1,55 @@
+const API = "http://localhost:5052/auth";
 
-
-const API = "http://localhost:5052/login";
- 
 function login() {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
- 
-    // Validar que no estén vacíos
-    if (!username || !password) {
-        mostrarError("Por favor ingresa usuario y contraseña");
+    const nombreUsuario = document.getElementById("nombreUsuario").value.trim();
+    const clave = document.getElementById("clave").value.trim();
+
+    if (!nombreUsuario || !clave) {
+        mostrarMensaje("Por favor completa todos los campos.", "error");
         return;
     }
- 
-    fetch(API, {
+
+    fetch(`${API}/login`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombreUsuario, clave })
     })
-    .then(res => {
-        if (res.ok) {
-            return res.json().then(usuario => {
-                // Login exitoso: guardar usuario en sesión y redirigir
-                sessionStorage.setItem("usuario", JSON.stringify(usuario));
-                alert("¡Bienvenido, " + usuario.username + "!");
-                // Redirigir al menú principal (ajusta la ruta según tu proyecto)
-                window.location.href = "../../front/tipoPersona/index.html";
-            });
+    .then(res => res.json())
+    .then(data => {
+        if (data.exito) {
+            // Guardar datos de sesión en localStorage
+            localStorage.setItem("idUsuario", data.idUsuario);
+            localStorage.setItem("nombreUsuario", data.nombreUsuario);
+            localStorage.setItem("nombreCompleto", data.nombreCompleto);
+            localStorage.setItem("idPerfil", data.idPerfil);
+
+            mostrarMensaje("¡Bienvenido " + data.nombreCompleto + "! Redirigiendo...", "exito");
+
+            // Redirigir al menú principal después de 1.2 segundos
+            setTimeout(() => {
+                window.location.href = "../tipoPersona/index.html";
+            }, 1200);
         } else {
-            mostrarError("Usuario o contraseña incorrectos");
+            mostrarMensaje(data.mensaje, "error");
         }
     })
-    .catch(err => {
-        mostrarError("Error al conectar con el servidor");
-        console.error(err);
+    .catch(() => {
+        mostrarMensaje("Error al conectar con el servidor.", "error");
     });
 }
- 
-function mostrarError(msg) {
-    const div = document.getElementById("mensaje-error");
-    div.textContent = msg;
-    div.style.display = "block";
+
+function mostrarMensaje(texto, tipo) {
+    const div = document.getElementById("mensaje");
+    div.textContent = texto;
+    div.className = "mensaje " + tipo;
 }
- 
-// Permitir login con la tecla Enter
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") login();
+
+// Permitir Enter en el campo de contraseña
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("clave").addEventListener("keydown", e => {
+        if (e.key === "Enter") login();
+    });
+    document.getElementById("nombreUsuario").addEventListener("keydown", e => {
+        if (e.key === "Enter") login();
+    });
 });

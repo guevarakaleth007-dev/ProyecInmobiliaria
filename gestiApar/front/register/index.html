@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Inmobiliaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>🏢 Inmobiliaria</h1>
+                <p>Crea tu cuenta</p>
+            </div>
+
+            <div id="mensaje" class="mensaje hidden"></div>
+
+            <div class="auth-form">
+                <p class="section-title">Datos personales</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" placeholder="Nombre" />
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido *</label>
+                        <input type="text" id="apellido" placeholder="Apellido" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" placeholder="correo@ejemplo.com" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" placeholder="Teléfono" maxlength="10" />
+                    </div>
+                    <div class="form-group">
+                        <label for="domicilio">Domicilio</label>
+                        <input type="text" id="domicilio" placeholder="Dirección" />
+                    </div>
+                </div>
+
+                <p class="section-title">Datos de acceso</p>
+
+                <div class="form-group">
+                    <label for="nombreUsuario">Usuario *</label>
+                    <input type="text" id="nombreUsuario" placeholder="Nombre de usuario" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="clave">Contraseña *</label>
+                        <input type="password" id="clave" placeholder="Contraseña" />
+                    </div>
+                    <div class="form-group">
+                        <label for="claveConfirm">Confirmar contraseña *</label>
+                        <input type="password" id="claveConfirm" placeholder="Confirmar" />
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="registrar()">Registrarse</button>
+            </div>
+
+            <div class="auth-footer">
+                <p>¿Ya tienes cuenta? <a href="../login/index.html">Inicia sesión aquí</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
