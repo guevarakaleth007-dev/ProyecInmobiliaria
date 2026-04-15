@@ -27,7 +27,7 @@ function login() {
 
             // Redirigir al menú principal después de 1.2 segundos
             setTimeout(() => {
-                window.location.href = "../tipoPersona/index.html";
+                window.location.href = "../inicio/index.html";
             }, 1200);
         } else {
             mostrarMensaje(data.mensaje, "error");

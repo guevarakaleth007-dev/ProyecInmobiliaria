@@ -3,6 +3,11 @@ const API = "http://localhost:5052/tipopersona";
 let editando = false;
 let idEditando = null;
 
+// Verificar sesión activa
+if (!localStorage.getItem("idUsuario")) {
+    window.location.href = "../login/index.html";
+}
+
 // LISTAR
 function listar() {
     fetch(API)
@@ -60,6 +65,10 @@ function eliminar(id) {
         })
         .then(() => listar());
     }
+}
+function cerrarSesion() {
+    localStorage.clear();
+    window.location.href = "../login/index.html";
 }
 
 // LIMPIAR

@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,8 @@ import lombok.Setter;
 public class tipoPersona {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_tipopersona")
+    @SequenceGenerator(name = "seq_tipopersona", sequenceName = "SEQ_TIPOPERSONA", allocationSize = 1)
     @Column(name = "IDTIPOPERSONA")
     private Long id;
 

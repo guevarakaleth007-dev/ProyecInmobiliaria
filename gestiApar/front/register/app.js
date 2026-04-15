@@ -1,4 +1,23 @@
 const API = "http://localhost:5052/auth";
+const API_TIPOS = "http://localhost:5052/tipopersona";
+
+// Cargar tipos de persona al iniciar la página
+document.addEventListener("DOMContentLoaded", () => {
+    fetch(API_TIPOS)
+        .then(res => res.json())
+        .then(data => {
+            const select = document.getElementById("idTipoPersona");
+            data.forEach(t => {
+                const option = document.createElement("option");
+                option.value = t.id;
+                option.textContent = t.descripcion;
+                select.appendChild(option);
+            });
+        })
+        .catch(() => {
+            mostrarMensaje("No se pudieron cargar los tipos de persona.", "error");
+        });
+});
 
 function registrar() {
     const nombre        = document.getElementById("nombre").value.trim();
@@ -9,8 +28,8 @@ function registrar() {
     const nombreUsuario = document.getElementById("nombreUsuario").value.trim();
     const clave         = document.getElementById("clave").value.trim();
     const claveConfirm  = document.getElementById("claveConfirm").value.trim();
+    const idTipoPersona = document.getElementById("idTipoPersona").value;
 
-    // Validaciones básicas
     if (!nombre || !apellido || !nombreUsuario || !clave || !claveConfirm) {
         mostrarMensaje("Los campos marcados con * son obligatorios.", "error");
         return;
@@ -34,7 +53,7 @@ function registrar() {
         domicilio,
         nombreUsuario,
         clave,
-        idTipoPersona: 1,
+        idTipoPersona: parseInt(idTipoPersona),
         idPerfil: 1
     };
 
