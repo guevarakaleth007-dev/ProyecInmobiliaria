@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Persona</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Gestión de Personas</h1>
+
+    <!-- FORMULARIO -->
+    <div class="card">
+        <h2 id="form-titulo">Nueva Persona</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nombre *</label>
+                <input type="text" id="nombre" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <label>Apellido *</label>
+                <input type="text" id="apellido" placeholder="Apellido">
+            </div>
+            <div class="form-group">
+                <label>Tipo de Persona *</label>
+                <select id="idTipoPersona"></select>
+            </div>
+            <div class="form-group">
+                <label>Fecha de Nacimiento</label>
+                <input type="date" id="fechaNacimiento">
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" id="telefono" placeholder="Teléfono" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label>Correo</label>
+                <input type="email" id="correo" placeholder="correo@ejemplo.com">
+            </div>
+            <div class="form-group full-width">
+                <label>Domicilio</label>
+                <input type="text" id="domicilio" placeholder="Dirección">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn-guardar" onclick="guardar()">💾 Guardar</button>
+            <button class="btn-cancelar" onclick="limpiar()">✖ Cancelar</button>
+        </div>
+    </div>
+
+    <!-- TABLA -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Tipo</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
