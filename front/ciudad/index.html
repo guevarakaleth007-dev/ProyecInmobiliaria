@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Ciudad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🏙️ Gestión de Ciudades</h1>
+
+    <!-- FORMULARIO -->
+    <div class="card">
+        <h2 id="form-titulo">Nueva Ciudad</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>País *</label>
+                <select id="idPais" onchange="cargarDepartamentosForm()">
+                    <option value="">-- Seleccione un país --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Departamento *</label>
+                <select id="idDepartamento">
+                    <option value="">-- Seleccione un departamento --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nombre de la Ciudad *</label>
+                <input type="text" id="nombre" placeholder="Ej: Medellín">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn-guardar" onclick="guardar()">💾 Guardar</button>
+            <button class="btn-cancelar" onclick="limpiar()">✖ Cancelar</button>
+        </div>
+    </div>
+
+    <!-- FILTROS DE TABLA EN CASCADA -->
+    <div class="card" style="padding: 16px 28px;">
+        <div class="filtros">
+            <label>Filtrar por:</label>
+            <select id="filtroPais" onchange="cargarDepartamentosFiltro()">
+                <option value="">-- Todos los países --</option>
+            </select>
+            <select id="filtroDepartamento" onchange="listar()">
+                <option value="">-- Todos los departamentos --</option>
+            </select>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Departamento</th>
+                <th>Ciudad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

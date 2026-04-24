@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD País</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🌎 Gestión de Países</h1>
+
+    <div class="card">
+        <h2 id="form-titulo">Nuevo País</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nombre *</label>
+                <input type="text" id="nombre" placeholder="Ej: Colombia">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn-guardar" onclick="guardar()">💾 Guardar</button>
+            <button class="btn-cancelar" onclick="limpiar()">✖ Cancelar</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
