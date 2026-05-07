@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Apartamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🏢 Gestión de Apartamentos</h1>
+
+    <!-- FORMULARIO -->
+    <div class="card">
+        <h2 id="form-titulo">Nuevo Apartamento</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Propietario *</label>
+                <select id="idPropietario">
+                    <option value="">-- Seleccione un propietario --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>País</label>
+                <select id="filtroPaisForm" onchange="cargarDepartamentosForm()">
+                    <option value="">-- Seleccione un país --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Departamento</label>
+                <select id="filtroDepartamentoForm" onchange="cargarCiudadesForm()">
+                    <option value="">-- Seleccione un departamento --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ciudad *</label>
+                <select id="idCiudad">
+                    <option value="">-- Seleccione una ciudad --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Dirección *</label>
+                <input type="text" id="direccion" placeholder="Ej: Cra 15 #23-45">
+            </div>
+            <div class="form-group">
+                <label>N° Habitaciones *</label>
+                <input type="number" id="numeroHabitacion" min="1" placeholder="Ej: 3">
+            </div>
+            <div class="form-group">
+                <label>Pago Mensual *</label>
+                <input type="number" id="pagoMensual" min="0" step="0.01" placeholder="Ej: 800000">
+            </div>
+            <div class="form-group">
+                <label>Estado *</label>
+                <select id="estado">
+                    <option value="">-- Seleccione --</option>
+                    <option value="true">Ocupado</option>
+                    <option value="false">Libre</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn-guardar" onclick="guardar()">💾 Guardar</button>
+            <button class="btn-cancelar" onclick="limpiar()">✖ Cancelar</button>
+        </div>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="card" style="padding: 16px 28px;">
+        <div class="filtros">
+            <label>Filtrar por estado:</label>
+            <select id="filtroEstado" onchange="listar()">
+                <option value="">-- Todos --</option>
+                <option value="true">Ocupado</option>
+                <option value="false">Libre</option>
+            </select>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Propietario</th>
+                <th>Ciudad</th>
+                <th>Dirección</th>
+                <th>Habitaciones</th>
+                <th>Pago Mensual</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

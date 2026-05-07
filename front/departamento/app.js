@@ -98,11 +98,11 @@ function guardar() {
         body: JSON.stringify(departamento)
     })
     .then(res => {
-        if (!res.ok) throw new Error("Error al guardar");
+        if (!res.ok) return res.text().then(t => { throw new Error(t || "Error " + res.status); });
         return res.json();
     })
     .then(() => { limpiar(); listar(); })
-    .catch(err => alert("Error: " + err.message));
+    .catch(err => alert("Error al guardar departamento:\n" + err.message));
 }
 
 // ── CARGAR DATOS PARA EDITAR ─────────────────────────────
