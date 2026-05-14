@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Mantenimiento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🔧 Gestión de Mantenimientos</h1>
+
+    <div class="card">
+        <h2 id="form-titulo">Nuevo Mantenimiento</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Apartamento *</label>
+                <select id="idApartamento">
+                    <option value="">-- Seleccione un apartamento --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Empleado *</label>
+                <select id="idEmpleado">
+                    <option value="">-- Seleccione un empleado --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha *</label>
+                <input type="datetime-local" id="fecha">
+            </div>
+            <div class="form-group full">
+                <label>Descripción *</label>
+                <input type="text" id="descripcion" maxlength="200" placeholder="Descripción del mantenimiento">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn-guardar" onclick="guardar()">💾 Guardar</button>
+            <button class="btn-cancelar" onclick="limpiar()">✖ Cancelar</button>
+        </div>
+    </div>
+
+    <div class="card filtros-card">
+        <div class="filtros">
+            <label>Filtrar por Apartamento:</label>
+            <select id="filtroApartamento" onchange="listar()">
+                <option value="">-- Todos --</option>
+            </select>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Apartamento</th>
+                <th>Empleado</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

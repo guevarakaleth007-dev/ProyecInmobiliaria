@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD PagoMantenimiento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>💳 Gestión de Pagos de Mantenimiento</h1>
+
+    <div class="card">
+        <h2 id="form-titulo">Nuevo Pago de Mantenimiento</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Mantenimiento *</label>
+                <select id="idMantenimiento">
+                    <option value="">-- Seleccione un mantenimiento --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Forma de Pago *</label>
+                <select id="idFormaPago">
+                    <option value="">-- Seleccione forma de pago --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha de Pago *</label>
+                <input type="datetime-local" id="fechaPago">
+            </div>
+            <div class="form-group">
+                <label>Valor *</label>
+                <input type="number" id="valor" min="0" step="0.01" placeholder="Ej: 150000">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn-guardar" onclick="guardar()">💾 Guardar</button>
+            <button class="btn-cancelar" onclick="limpiar()">✖ Cancelar</button>
+        </div>
+    </div>
+
+    <div class="card filtros-card">
+        <div class="filtros">
+            <label>Filtrar por Mantenimiento:</label>
+            <select id="filtroMantenimiento" onchange="listar()">
+                <option value="">-- Todos --</option>
+            </select>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Mantenimiento</th>
+                <th>Forma de Pago</th>
+                <th>Fecha de Pago</th>
+                <th>Valor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

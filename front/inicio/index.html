@@ -3,169 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Inmobiliaria</title>
+    <title>Panel - Inmobiliaria</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eef1f7;
             min-height: 100vh;
         }
- 
+
+        /* ── NAVBAR ── */
         .navbar {
-            background: #343a40;
+            background: #1a1d23;
             color: white;
-            padding: 15px 30px;
+            padding: 0 32px;
+            height: 60px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
- 
-        .navbar h2 { font-size: 20px; }
- 
-        .navbar span { font-size: 14px; opacity: 0.8; }
- 
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .navbar-brand span { font-size: 22px; }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-user {
+            font-size: 13px;
+            color: #adb5bd;
+        }
+
         .btn-salir {
-            background: #dc3545;
+            background: #e63946;
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
+            padding: 7px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
         }
- 
-        .welcome {
+
+        .btn-salir:hover { background: #c1121f; }
+
+        /* ── HEADER ── */
+        .header {
             text-align: center;
-            padding: 50px 20px 30px;
-            color: #333;
+            padding: 48px 20px 32px;
         }
- 
-        .welcome h1 { font-size: 28px; margin-bottom: 8px; }
-        .welcome p  { color: #666; font-size: 15px; }
- 
+
+        .header h1 {
+            font-size: 30px;
+            color: #1a1d23;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+        /* ── SECCIONES ── */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #6c757d;
+            margin-bottom: 16px;
+            padding-left: 4px;
+            border-left: 3px solid #4361ee;
+            padding-left: 10px;
+        }
+
+        /* ── GRID ── */
         .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding: 20px 40px 40px;
-            max-width: 900px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
         }
- 
+
+        /* ── CARD ── */
         .card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 25px 30px;
+            border-radius: 14px;
+            padding: 28px 16px 22px;
             text-align: center;
-            width: 180px;
             text-decoration: none;
-            color: #333;
-            transition: transform 0.15s, box-shadow 0.15s;
+            color: #1a1d23;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+            border: 1px solid #e9ecef;
+            transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
- 
+
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(67,97,238,0.13);
+            border-color: #4361ee;
         }
- 
-        .card .icon { font-size: 36px; margin-bottom: 10px; }
-        .card .label { font-size: 14px; font-weight: bold; }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+
+        .card-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        /* Colores por categoría */
+        .bg-purple  { background: #f0ebff; }
+        .bg-orange  { background: #fff3e0; }
+        .bg-blue    { background: #e8f4fd; }
+        .bg-green   { background: #e8f8f0; }
+        .bg-red     { background: #fdecea; }
+        .bg-teal    { background: #e0f7f4; }
+        .bg-yellow  { background: #fffde7; }
+        .bg-indigo  { background: #e8eaf6; }
+        .bg-pink    { background: #fce4ec; }
+        .bg-brown   { background: #efebe9; }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #adb5bd;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
- 
+
+<!-- NAVBAR -->
 <nav class="navbar">
-    <h2>🏢 Inmobiliaria</h2>
-    <span id="bienvenida"></span>
-    <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+    <div class="navbar-brand">
+        <span>🏢</span> Inmobiliaria
+    </div>
+    <div class="navbar-right">
+        <span class="navbar-user" id="bienvenida"></span>
+        <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
 </nav>
- 
-<div class="welcome">
+
+<!-- HEADER -->
+<div class="header">
     <h1>Panel de administración</h1>
     <p>Seleccioná un módulo para comenzar</p>
 </div>
- 
-<div class="grid">
- 
-    <a class="card" href="../tipoPersona/index.html">
-        <div class="icon">👤</div>
-        <div class="label">Tipo Persona</div>
-    </a>
- 
-    <a class="card" href="../persona/index.html">
-        <div class="icon">🧑</div>
-        <div class="label">Persona</div>
-    </a>
- 
-    <a class="card" href="../empleado/index.html">
-        <div class="icon">👷</div>
-        <div class="label">Empleado</div>
-    </a>
- 
-    <a class="card" href="../cliente/index.html">
-        <div class="icon">🤝</div>
-        <div class="label">Cliente</div>
-    </a>
- 
-    <a class="card" href="../propietario/index.html">
-        <div class="icon">🏠</div>
-        <div class="label">Propietario</div>
-    </a>
 
-    <a class="card" href="../pais/index.html">
-        <div class="icon">🌎</div>
-        <div class="label">País</div>
-    </a>
-
-    <a class="card" href="../departamento/index.html">
-        <div class="icon">🗺️</div>
-        <div class="label">Departamento</div>
-    </a>
-
-    <a class="card" href="../ciudad/index.html">
-        <div class="icon">🏙️</div>
-        <div class="label">Ciudad</div>
-    </a>
-
-    <a class="card" href="../apartamento/index.html">
-        <div class="icon">🏢</div>
-        <div class="label">Apartamento</div>
-    </a>
-
-    <a class="card" href="../contrato/index.html">
-        <div class="icon">📄</div>
-        <div class="label">Contrato</div>
-    </a>
-    
-    <a class="card" href="../formaPago/index.html">
-    <div class="icon">💳</div>
-    <div class="label">Forma de Pago</div>
-</a>
-
-<a class="card" href="../pagoContrato/index.html">
-    <div class="icon">💰</div>
-    <div class="label">Pago Contrato</div>
-</a>
- 
+<!-- SECCIÓN: PERSONAS -->
+<div class="section">
+    <div class="section-title">Personas</div>
+    <div class="grid">
+        <a class="card" href="../tipoPersona/index.html">
+            <div class="card-icon bg-purple">👤</div>
+            <div class="card-label">Tipo Persona</div>
+        </a>
+        <a class="card" href="../persona/index.html">
+            <div class="card-icon bg-orange">🧑</div>
+            <div class="card-label">Persona</div>
+        </a>
+        <a class="card" href="../empleado/index.html">
+            <div class="card-icon bg-orange">👷</div>
+            <div class="card-label">Empleado</div>
+        </a>
+        <a class="card" href="../cliente/index.html">
+            <div class="card-icon bg-yellow">🤝</div>
+            <div class="card-label">Cliente</div>
+        </a>
+        <a class="card" href="../propietario/index.html">
+            <div class="card-icon bg-red">🏠</div>
+            <div class="card-label">Propietario</div>
+        </a>
+    </div>
 </div>
- 
+
+<!-- SECCIÓN: UBICACIÓN -->
+<div class="section">
+    <div class="section-title">Ubicación</div>
+    <div class="grid">
+        <a class="card" href="../pais/index.html">
+            <div class="card-icon bg-blue">🌎</div>
+            <div class="card-label">País</div>
+        </a>
+        <a class="card" href="../departamento/index.html">
+            <div class="card-icon bg-blue">🗺️</div>
+            <div class="card-label">Departamento</div>
+        </a>
+        <a class="card" href="../ciudad/index.html">
+            <div class="card-icon bg-blue">🏙️</div>
+            <div class="card-label">Ciudad</div>
+        </a>
+    </div>
+</div>
+
+<!-- SECCIÓN: INMUEBLES Y CONTRATOS -->
+<div class="section">
+    <div class="section-title">Inmuebles y Contratos</div>
+    <div class="grid">
+        <a class="card" href="../apartamento/index.html">
+            <div class="card-icon bg-indigo">🏢</div>
+            <div class="card-label">Apartamento</div>
+        </a>
+        <a class="card" href="../contrato/index.html">
+            <div class="card-icon bg-brown">📄</div>
+            <div class="card-label">Contrato</div>
+        </a>
+        <a class="card" href="../formaPago/index.html">
+            <div class="card-icon bg-teal">💳</div>
+            <div class="card-label">Forma de Pago</div>
+        </a>
+        <a class="card" href="../pagoContrato/index.html">
+            <div class="card-icon bg-green">💰</div>
+            <div class="card-label">Pago Contrato</div>
+        </a>
+    </div>
+</div>
+
+<!-- SECCIÓN: MANTENIMIENTO -->
+<div class="section">
+    <div class="section-title">Mantenimiento</div>
+    <div class="grid">
+        <a class="card" href="../mantenimiento/index.html">
+            <div class="card-icon bg-orange">🔧</div>
+            <div class="card-label">Mantenimiento</div>
+        </a>
+        <a class="card" href="../pagoMantenimiento/index.html">
+            <div class="card-icon bg-pink">🧾</div>
+            <div class="card-label">Pago Mantenimiento</div>
+        </a>
+    </div>
+</div>
+
+<footer>© 2026 Inmobiliaria · Sistema de Gestión</footer>
+
 <script>
     if (!localStorage.getItem("idUsuario")) {
         window.location.href = "../login/index.html";
     }
- 
+
     document.getElementById("bienvenida").textContent =
         "Bienvenido, " + (localStorage.getItem("nombreCompleto") || "Usuario");
- 
+
     function cerrarSesion() {
         localStorage.clear();
         window.location.href = "../login/index.html";
     }
 </script>
- 
+
 </body>
 </html>
